@@ -33,7 +33,7 @@ class Router {
     }
 
     private toPattern(input) {
-        Matcher m = (~/(\{)([a-z]+)(\})/).matcher(input)
+        Matcher m = (~/(\{)([a-zA-Z0-9]+)(\})/).matcher(input)
         StringBuffer r = new StringBuffer()
         while (m.find()) {
             m.appendReplacement(r, "(?<${m.group(2)}>[^/]+)")
