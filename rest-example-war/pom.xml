@@ -16,19 +16,13 @@
     <dependencies>
         <dependency>
             <groupId>rest</groupId>
-            <artifactId>rest-core</artifactId>
+            <artifactId>rest-servlet</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>rest</groupId>
             <artifactId>rest-example-resources</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

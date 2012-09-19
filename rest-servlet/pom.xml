@@ -10,19 +10,20 @@
         <relativePath>../rest-parent</relativePath>
     </parent>
 
-    <artifactId>rest-example-sun</artifactId>
+    <artifactId>rest-servlet</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>rest</groupId>
-            <artifactId>rest-sunhttpserver</artifactId>
+            <artifactId>rest-core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
-            <groupId>rest</groupId>
-            <artifactId>rest-example-resources</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>2.5</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>

@@ -10,18 +10,13 @@
         <relativePath>../rest-parent</relativePath>
     </parent>
 
-    <artifactId>rest-example-sun</artifactId>
+    <artifactId>rest-sunhttpserver</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
             <groupId>rest</groupId>
-            <artifactId>rest-sunhttpserver</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>rest</groupId>
-            <artifactId>rest-example-resources</artifactId>
+            <artifactId>rest-core</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>

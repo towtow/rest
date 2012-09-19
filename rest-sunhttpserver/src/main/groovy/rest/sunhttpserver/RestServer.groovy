@@ -1,4 +1,4 @@
-package rest.sun
+package rest.sunhttpserver
 
 import com.sun.net.httpserver.HttpExchange
 import com.sun.net.httpserver.HttpHandler
@@ -6,7 +6,7 @@ import com.sun.net.httpserver.HttpServer
 import rest.Controller
 import rest.Exchange
 
-class Server {
+class RestServer {
 
     static start(Controller controller) {
         def server = HttpServer.create()

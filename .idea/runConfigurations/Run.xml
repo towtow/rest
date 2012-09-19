@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Run" type="GroovyScriptRunConfiguration" factoryName="Groovy">
     <module name="rest-example-sun" />
-    <setting name="path" value="C:\java\rest\rest-example-sun\src\main\groovy\rest\example\InitSun.groovy" />
+    <setting name="path" value="C:\java\rest\rest-example-sun\src\main\groovy\rest\example\Run.groovy" />
     <setting name="vmparams" value="" />
     <setting name="params" value="" />
     <setting name="workDir" value="" />

@@ -8,4 +8,4 @@ import rest.example.resources.TestResource
 
 def router = new Router([ProjectsResource, ProjectResource, TestResource])
 def controller = new Controller(router)
-rest.sun.Server.start(controller)
+rest.sunhttpserver.RestServer.start(controller)
