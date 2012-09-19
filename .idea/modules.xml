@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/rest.iml" filepath="$PROJECT_DIR$/rest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rest-core/rest-core.iml" filepath="$PROJECT_DIR$/rest-core/rest-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rest-example-resources/rest-example-resources.iml" filepath="$PROJECT_DIR$/rest-example-resources/rest-example-resources.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rest-example-sun/rest-example-sun.iml" filepath="$PROJECT_DIR$/rest-example-sun/rest-example-sun.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rest-example-war/rest-example-war.iml" filepath="$PROJECT_DIR$/rest-example-war/rest-example-war.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rest-parent/rest-parent.iml" filepath="$PROJECT_DIR$/rest-parent/rest-parent.iml" />
     </modules>
   </component>
 </project>

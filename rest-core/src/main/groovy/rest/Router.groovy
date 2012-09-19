@@ -8,7 +8,7 @@ import java.util.regex.Pattern
 class Router {
     private List<Map> routes = []
 
-    def add(Class... resourceClasses) {
+    Router(Iterable<Class> resourceClasses) {
         resourceClasses.each { resourceClass ->
             Route r = resourceClass.getAnnotation(Route)
             routes << [template: r.value().replace('{', '${'), pattern: toPattern(r.value()), resourceClass: resourceClass]

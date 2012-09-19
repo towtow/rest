@@ -4,9 +4,16 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>rest</groupId>
-    <artifactId>rest</artifactId>
-    <name>rest project</name>
+    <artifactId>rest-parent</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
+    <modules>
+        <module>../rest-core</module>
+        <module>../rest-example-resources</module>
+        <module>../rest-example-sun</module>
+        <module>../rest-example-war</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
