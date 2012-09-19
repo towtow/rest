@@ -7,13 +7,13 @@ import java.text.SimpleDateFormat
 class Controller {
     private final static String[] RESOURCE_METHODS = ['GET', 'POST', 'PUT', 'DELETE', 'PATCH']
 
-    final router
+    private final Router router
 
-    Controller(router) {
+    Controller(Router router) {
         this.router = router
     }
 
-    void handle(exchange) {
+    void handle(Exchange exchange) {
         try {
             def rsp = invokeResource(exchange)
             def contentLength = rsp.contentLength ?: 0
@@ -26,7 +26,7 @@ class Controller {
         }
     }
 
-    private invokeResource(exchange) {
+    private invokeResource(Exchange exchange) {
         try {
             def x = [request: [uri: exchange.requestURI], response: [:]]
             def res = router.matchResource(x.request.uri)
@@ -64,7 +64,7 @@ class Controller {
         }
     }
 
-    def addAllowHeader(exchange, resource) {
+    def addAllowHeader(Exchange exchange, resource) {
         def allowedMethods = RESOURCE_METHODS.findAll { isMethodDefined(resource, it) }
         if (allowedMethods.contains('GET')) allowedMethods << 'HEAD'
         if (allowedMethods) exchange.responseHeaders.add('Allow', allowedMethods.join(', '))
@@ -75,18 +75,18 @@ class Controller {
         res.class.methods.find { it.name == lcName }
     }
 
-    private void logAccess(exchange, rsp, contentLength) {
+    private void logAccess(Exchange exchange, rsp, contentLength) {
         def clientAdr = exchange?.remoteAddress?.address?.hostAddress
         def timestamp = new SimpleDateFormat('dd/MMM/yyyy:kk:mm:ss Z', Locale.ENGLISH).format(new Date())
         System.out.println("${clientAdr ?: '-'} - [${timestamp ?: '-'}] \'${requestInfo(exchange)}\' ${rsp.code ?: '-'} ${contentLength ?: '-'}")
     }
 
-    private logError(exchange, Exception ex) {
+    private logError(Exchange exchange, Exception ex) {
         System.err.println(requestInfo(exchange))
         ex.printStackTrace(System.err)
     }
 
-    private requestInfo(exchange) {
+    private requestInfo(Exchange exchange) {
         "${exchange?.requestMethod ?: '-'} ${exchange?.requestURI ?: '-'} ${exchange?.protocol ?: '-'}".toString()
     }
 }

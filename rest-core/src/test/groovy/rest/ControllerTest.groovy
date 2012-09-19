@@ -1,6 +1,5 @@
 package rest
 
-import com.sun.net.httpserver.Headers
 import spock.lang.Specification
 
 class ControllerTest extends Specification {
@@ -56,30 +55,4 @@ class ControllerTest extends Specification {
         then:
         responseBody.toString('utf-8') == '{"a":1}'
     }
-}
-
-interface Resource {
-    def getResponse()
-
-    def setResponse(response)
-
-    def get()
-}
-
-interface Exchange {
-    Headers getResponseHeaders()
-
-    URI getRequestURI()
-
-    String getRequestMethod()
-
-    void close()
-
-    OutputStream getResponseBody()
-
-    void sendResponseHeaders(int i, long l)
-
-    InetSocketAddress getRemoteAddress()
-
-    String getProtocol()
 }

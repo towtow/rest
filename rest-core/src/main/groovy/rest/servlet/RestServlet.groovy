@@ -1,6 +1,7 @@
 package rest.servlet
 
 import rest.Controller
+import rest.Exchange
 import rest.Router
 
 import javax.servlet.Servlet
@@ -17,7 +18,7 @@ class RestServlet implements Servlet {
     @Override
     void init(ServletConfig config) {
         this.config = config
-        List<Class> resourceClasses = config.getInitParameter("rest.servlet.RestServlet.resourceClasses").split("[,;]").collect {
+        List<Class> resourceClasses = config.getInitParameter("rest.resourceClasses").split(",").collect {
             Thread.currentThread().contextClassLoader.loadClass(it)
         }
         def router = new Router(resourceClasses)
@@ -33,21 +34,48 @@ class RestServlet implements Servlet {
     void service(final ServletRequest req, final ServletResponse res) {
         final HttpServletRequest request = (HttpServletRequest) req
         final HttpServletResponse response = (HttpServletResponse) res
-        controller.handle([
-                getResponseHeaders: {->
-                    [add: {String name, String value -> response.addHeader(name, value)}]
-                },
-                getRequestURI: {-> URI.create(request.requestURI) },
-                getRequestMethod: {-> request.method },
-                close: {-> },
-                getResponseBody: {-> response.outputStream },
-                sendResponseHeaders: {int statusCode, long contentLength ->
-                    response.setStatus(statusCode)
-                    response.addHeader('Content-Length', String.valueOf(contentLength))
-                },
-                getRemoteAddress: {-> new InetSocketAddress(request.remoteAddr, request.remotePort)},
-                getProtocol: {-> request.protocol }
-        ])
+        controller.handle(new Exchange() {
+            @Override
+            def getResponseHeaders() {
+                [add: { String name, String value ->  response.addHeader(name, value) }]
+            }
+
+            @Override
+            URI getRequestURI() {
+                URI.create(request.requestURI)
+            }
+
+            @Override
+            String getRequestMethod() {
+                request.method
+            }
+
+            @Override
+            void close() {
+            }
+
+            @Override
+            OutputStream getResponseBody() {
+                response.outputStream
+            }
+
+            @Override
+            void sendResponseHeaders(int statusCode, long contentLength) {
+                response.setStatus(statusCode)
+                response.addHeader('Content-Length', String.valueOf(contentLength))
+
+            }
+
+            @Override
+            InetSocketAddress getRemoteAddress() {
+                new InetSocketAddress(request.remoteAddr, request.remotePort)
+            }
+
+            @Override
+            String getProtocol() {
+                request.protocol
+            }
+        })
     }
 
     @Override
