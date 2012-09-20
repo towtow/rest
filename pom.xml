@@ -9,12 +9,12 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <module>../rest-core</module>
-        <module>../rest-sunhttpserver</module>
-        <module>../rest-servlet</module>
-        <module>../rest-example-resources</module>
-        <module>../rest-example-sun</module>
-        <module>../rest-example-war</module>
+        <module>rest-core</module>
+        <module>rest-sunhttpserver</module>
+        <module>rest-servlet</module>
+        <module>rest-example-resources</module>
+        <module>rest-example-sun</module>
+        <module>rest-example-war</module>
     </modules>
 
     <properties>
